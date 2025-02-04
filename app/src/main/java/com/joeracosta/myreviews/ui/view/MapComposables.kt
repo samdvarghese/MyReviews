@@ -108,7 +108,7 @@ fun MapMarker(
                     shape = shape
                 )
                 .clip(shape)
-                .background(if (place.isFavorite) DeepRed else ForestGreen)
+                .background(if (place.review == null) Color.Gray else if (place.isFavorite) DeepRed else ForestGreen)
                 .padding(5.dp),
             contentAlignment = Alignment.Center,
         ) {
@@ -146,4 +146,26 @@ fun SearchPreview() {
         true,
         true
     ) { }
+}
+
+@Preview
+@Composable
+fun MapMarkerPreview() {
+    val testPlace = MyPlace(
+        id = "1",
+        name = "Park West Tavern",
+        review = Review(
+            "This is review text for park west tavern. Their Guinness is not consistent",
+            8.4F
+        ),
+        isFavorite = false,
+        mapData = MapData(
+            LatLng(
+                40.980407,
+                -74.118161
+            ),
+            "pwt address"
+        )
+    )
+    MapMarker(testPlace) { }
 }
