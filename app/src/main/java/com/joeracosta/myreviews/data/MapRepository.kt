@@ -43,7 +43,8 @@ class MapRepositoryImpl(private val placesClient: PlacesClient) : MapRepository 
                             review = null,
                             isFavorite = false,
                             mapData = MapData(
-                                latLng = it.location ?: LatLng(0.0,0.0),
+                                latitude = it.location?.latitude ?: 0.0,
+                                longitude = it.location?.longitude ?: 0.0,
                                 address = it.formattedAddress.orEmpty()
                             )
                         )

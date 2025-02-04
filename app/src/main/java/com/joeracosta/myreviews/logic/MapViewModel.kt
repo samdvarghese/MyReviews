@@ -50,10 +50,8 @@ class MapViewModel(
             ),
             isFavorite = false,
             mapData = MapData(
-                LatLng(
-                    40.980407,
-                    -74.118161
-                ),
+                40.980407,
+                -74.118161,
                 "pwt address"
             )
         )
@@ -67,10 +65,8 @@ class MapViewModel(
             ),
             isFavorite = true,
             mapData = MapData(
-                LatLng(
-                    40.9792684,
-                    -74.1158964,
-                ),
+                40.9792684,
+                -74.1158964,
                 "dt address"
             )
         )
@@ -96,7 +92,10 @@ class MapViewModel(
 
     fun doPlaceSearch() {
         viewModelScope.launch {
-            val result = mapRepository.searchPlace(state.value.searchQuery.orEmpty(), state.value.currentMapCenter)
+            val result = mapRepository.searchPlace(
+                state.value.searchQuery.orEmpty(),
+                state.value.currentMapCenter
+            )
             if (result is MyResult.Success) {
                 updateMapState(
                     _state.value.copy(
@@ -131,7 +130,10 @@ class MapViewModel(
         updateMapState(
             _state.value.copy(
                 openedPlace = place,
-                positionToJumpTo = place.mapData.latLng
+                positionToJumpTo = LatLng(
+                    place.mapData.latitude,
+                    place.mapData.longitude
+                )
             )
         )
     }
@@ -178,7 +180,7 @@ class MapViewModel(
 
     // Define ViewModel factory in a companion object
     companion object {
-        class Factory(private val mapRepository: MapRepository): ViewModelProvider.Factory {
+        class Factory(private val mapRepository: MapRepository) : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return MapViewModel(mapRepository) as T
             }

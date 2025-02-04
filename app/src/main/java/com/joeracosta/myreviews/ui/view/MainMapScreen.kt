@@ -41,14 +41,15 @@ import com.google.maps.android.compose.MapUiSettings
 import com.google.maps.android.compose.rememberCameraPositionState
 import com.joeracosta.myreviews.R
 import com.joeracosta.myreviews.data.Constants
+import com.joeracosta.myreviews.data.MyPlace
 import com.joeracosta.myreviews.logic.MapViewModel
-import com.joeracosta.myreviews.ui.theme.MyReviewsTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainMapScreen(
     mapViewModel: MapViewModel,
-    locateMeClicked: () -> Unit
+    locateMeClicked: () -> Unit,
+    onEditPlaceClicked: (place: MyPlace) -> Unit
 ) {
 
     val mapState = mapViewModel.state.collectAsState()
@@ -231,7 +232,7 @@ fun MainMapScreen(
                         //todo
                     },
                     onEditClicked = {
-                        //todo
+                        onEditPlaceClicked(currentlyOpenedPlace)
                     }
                 ) {
                     mapViewModel.placeClosed()

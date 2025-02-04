@@ -83,8 +83,8 @@ fun MapMarker(
         remember {
             MarkerState(
                 position = LatLng(
-                    place.mapData.latLng.latitude,
-                    place.mapData.latLng.longitude
+                    place.mapData.latitude,
+                    place.mapData.longitude
                 )
             )
         }
@@ -134,10 +134,8 @@ fun SearchPreview() {
         ),
         isFavorite = false,
         mapData = MapData(
-            LatLng(
-                40.980407,
-                -74.118161
-            ),
+            40.980407,
+            -74.118161,
             "pwt address"
         )
     )
@@ -160,10 +158,8 @@ fun MapMarkerPreview() {
         ),
         isFavorite = false,
         mapData = MapData(
-            LatLng(
-                40.980407,
-                -74.118161
-            ),
+            40.980407,
+            -74.118161,
             "pwt address"
         )
     )

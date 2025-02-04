@@ -154,10 +154,8 @@ fun SheetPreview() {
         ),
         isFavorite = false,
         mapData = MapData(
-            LatLng(
-                40.980407,
-                -74.118161
-            ),
+            40.980407,
+            -74.118161,
             "pwt address"
         )
     )

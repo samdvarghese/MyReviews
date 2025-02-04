@@ -16,6 +16,7 @@ import androidx.navigation.toRoute
 import com.google.android.gms.location.LocationServices
 import com.google.android.libraries.places.api.Places
 import com.joeracosta.myreviews.data.MapRepositoryImpl
+import com.joeracosta.myreviews.data.MyPlace
 import com.joeracosta.myreviews.logic.LastLocationGetter
 import com.joeracosta.myreviews.logic.LastLocationProviderActivityImpl
 import com.joeracosta.myreviews.logic.MapViewModel
@@ -23,7 +24,10 @@ import com.joeracosta.myreviews.ui.theme.MyReviewsTheme
 import com.joeracosta.myreviews.ui.view.EditScreen
 import com.joeracosta.myreviews.ui.view.MainMapScreen
 import com.joeracosta.myreviews.ui.view.MapScreen
+import com.joeracosta.myreviews.ui.view.ReviewEditScreen
+import com.joeracosta.myreviews.ui.view.parcelableType
 import kotlinx.coroutines.launch
+import kotlin.reflect.typeOf
 
 
 class MapActivity : ComponentActivity() {
@@ -67,14 +71,21 @@ class MapActivity : ComponentActivity() {
                 NavHost(navController, startDestination = MapScreen) {
                     composable<MapScreen> {
                         MainMapScreen(
-                            mapViewModel
-                        ) {
-                            handleLocation(true)
-                        }
+                            mapViewModel = mapViewModel,
+                            locateMeClicked = {
+                                handleLocation(true)
+                            },
+                            onEditPlaceClicked = {
+                                navController.navigate(route = EditScreen(it))
+                            }
+                        )
                     }
-                    composable<EditScreen> { backStackEntry ->
-                        val editScreen: EditScreen = backStackEntry.toRoute()
-                        //todo
+                    composable<EditScreen>(
+                        typeMap = mapOf(typeOf<MyPlace>() to parcelableType<MyPlace>())
+                    ) { backStackEntry ->
+                        val editScreen = backStackEntry.toRoute<EditScreen  >()
+                        val place = editScreen.place
+                        ReviewEditScreen(place)
                     }
                 }
 
