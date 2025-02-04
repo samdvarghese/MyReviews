@@ -6,18 +6,16 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.calculateEndPadding
 import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -58,8 +56,8 @@ import com.joeracosta.myreviews.logic.MapViewModel
 import com.joeracosta.myreviews.ui.theme.MyReviewsTheme
 import com.joeracosta.myreviews.ui.view.MapMarker
 import com.joeracosta.myreviews.ui.view.PlaceSheet
+import com.joeracosta.myreviews.ui.view.SearchResult
 import kotlinx.coroutines.launch
-import kotlin.math.exp
 
 
 class MapActivity : ComponentActivity() {
@@ -72,7 +70,7 @@ class MapActivity : ComponentActivity() {
         val granted = permissions.any { it.value }
 
         if (granted) {
-            updateCurrentLocation()
+            updateCurrentLocation(mapViewModel.state.value.currentLocation == null)
         } else {
             //todo error saying need permissions
         }
@@ -94,7 +92,7 @@ class MapActivity : ComponentActivity() {
                 )
             )[MapViewModel::class.java]
 
-        handleLocation()
+        handleLocation(mapViewModel.state.value.currentLocation == null)
 
         enableEdgeToEdge()
         setContent {
@@ -149,15 +147,15 @@ class MapActivity : ComponentActivity() {
                             LazyColumn {
                                 val placeSearchResults = mapState.value.placeSearchResults
                                 placeSearchResults?.let {
-                                    items(it) { place ->
-                                        Text(
-                                            modifier = Modifier.clickable {
-                                                mapViewModel.placeClicked(place)
-                                                expanded = false
-                                                mapViewModel.clearSearch()
-                                            },
-                                            text = place.name
-                                        )
+                                    itemsIndexed(it) { index, place ->
+                                        SearchResult(
+                                            place = place,
+                                            firstItem = index == 0,
+                                            lastItem = index == placeSearchResults.size - 1) {
+                                            mapViewModel.placeClicked(place)
+                                            expanded = false
+                                            mapViewModel.clearSearch()
+                                        }
                                     }
                                 }
                             }
@@ -251,7 +249,7 @@ class MapActivity : ComponentActivity() {
                         // Locate Me Button
                         FloatingActionButton(
                             onClick = {
-                                handleLocation()
+                                handleLocation(true)
                             },
                             modifier = Modifier
                                 .align(Alignment.BottomEnd)
@@ -285,7 +283,7 @@ class MapActivity : ComponentActivity() {
         }
     }
 
-    private fun handleLocation() {
+    private fun handleLocation(jumpToPosition: Boolean) {
 
         val permissionFine = android.Manifest.permission.ACCESS_FINE_LOCATION
         val permissionCoarse = android.Manifest.permission.ACCESS_COARSE_LOCATION
@@ -302,11 +300,11 @@ class MapActivity : ComponentActivity() {
 
         // Permission has been granted
         if (fineGranted || coarseGranted) {
-            updateCurrentLocation()
+            updateCurrentLocation(jumpToPosition)
             return
         }
 
-        //rationale dialog?
+        //todo rationale dialog?
 
         foregroundLocationPermissionLauncher.launch(
             arrayOf(
@@ -317,7 +315,7 @@ class MapActivity : ComponentActivity() {
     }
 
 
-    private fun updateCurrentLocation() {
+    private fun updateCurrentLocation(jumpToPosition: Boolean) {
         val fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
         lastLocationGetter = LastLocationProviderActivityImpl(fusedLocationProviderClient)
 
@@ -326,7 +324,7 @@ class MapActivity : ComponentActivity() {
             if (latestLocation != null) {
                 mapViewModel.updateCurrentLocation(
                     latestLocation,
-                    mapViewModel.state.value.currentLocation == null
+                    jumpToPosition
                 )
             }
         }

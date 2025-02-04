@@ -69,14 +69,6 @@ fun PlaceSheet(
                         fontWeight = FontWeight.Medium,
                         textAlign = TextAlign.Start
                     )
-                    Text(
-                        maxLines = 1,
-                        text = place.mapData.address,
-                        color = Color.LightGray,
-                        style = MaterialTheme.typography.labelMedium,
-                        fontWeight = FontWeight.Medium,
-                        textAlign = TextAlign.Start
-                    )
                     if (place.isFavorite) {
                         Text(
                             maxLines = 1,
@@ -96,12 +88,21 @@ fun PlaceSheet(
                         contentColor = ForestGreen,
                         containerColor = Color.Transparent
                     ),
-                    elevation = ButtonDefaults.buttonElevation(0.dp) // Removes shadow
+                    elevation = ButtonDefaults.buttonElevation(0.dp)
                 ) {
                     val editText = if (place.review != null) stringResource(R.string.edit_button) else stringResource(R.string.add_review_button)
                     Text(text = editText)
                 }
             }
+
+            Text(
+                maxLines = 1,
+                text = place.mapData.address,
+                color = Color.LightGray,
+                style = MaterialTheme.typography.labelMedium,
+                fontWeight = FontWeight.Medium,
+                textAlign = TextAlign.Start
+            )
 
 
             Spacer(Modifier.height(12.dp))
