@@ -11,6 +11,8 @@ composeBom = "2024.04.01"
 composeMapVersion = "6.4.1"
 playServicesLocation = "21.3.0"
 placesVersion = "4.1.0"
+composeNavVersion = "2.8.6"
+kotlinSerializableVersion = "1.7.3"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -30,6 +32,8 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 compose-maps = { group = "com.google.maps.android", name = "maps-compose", version.ref = "composeMapVersion"}
 play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation" }
 google-places = { group = "com.google.android.libraries.places", name = "places", version.ref = "placesVersion"}
+compose-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "composeNavVersion"}
+kotlin-serializable = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinSerializableVersion" }
 
 
 [plugins]

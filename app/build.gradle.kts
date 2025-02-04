@@ -2,6 +2,9 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+
+    // Kotlin serialization plugin for type safe routes and navigation arguments
+    kotlin("plugin.serialization") version "2.0.21"
 }
 
 android {
@@ -52,6 +55,8 @@ dependencies {
     implementation(libs.compose.maps)
     implementation(libs.play.services.location)
     implementation(libs.google.places)
+    implementation(libs.compose.navigation)
+    implementation(libs.kotlin.serializable)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
