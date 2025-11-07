@@ -1,0 +1,55 @@
+# 👋 Hey Jay
+
+I came across your job posting for a Data Engineering role and figured you’re probably getting flooded with messages — so I wanted to take a more creative route and reach out here on GitHub.  
+
+You’ll find my resume and tech stack below.  
+I’d be happy to chat or jump on a quick call if it helps to walk through how I can contribute.
+
+---
+
+## 🧠 About Me
+
+- 💼 Data Engineer with 6+ years of experience building **ETL/ELT pipelines**, **Snowflake**, **AWS Glue**, and **Python**-based data automation  
+- 🚀 Skilled in designing **scalable ingestion frameworks**, **API integrations**, and **data quality monitoring**  
+- ☁️ Experienced across **AWS**, **Azure**, and **Snowflake** ecosystems  
+- 🧩 Passionate about **data reliability**, **automation**, and **high-impact analytics**
+
+---
+
+## 🛠️ Tech Stack
+
+| Category | Tools |
+|-----------|-------|
+| Languages | Python, SQL, Bash |
+| Cloud | AWS (S3, Glue, Lambda), Azure Data Factory |
+| Warehouses | Snowflake, Athena, Redshift |
+| ETL / Workflow | Apache Airflow, AWS Glue, Informatica, Fivetran |
+| Databases | SQL Server, MySQL, PostgreSQL |
+| Other | Docker, GitHub Actions, dbt, Streamlit |
+
+---
+
+## 📄 Resume
+
+📎 [View Resume (PDF)](./Sam_Daniel-Resume.pdf)  
+*(or scroll down to see highlights below)*
+
+---
+
+## 🧩 Featured Projects
+
+- **🏦 Loan Portfolio ETL Pipeline** – Automated ingestion from partner SFTP → S3 → Snowflake with audit and masking  
+- **📊 Address Normalization Engine** – Built Python + Smarty API pipeline to cleanse 1M+ addresses  
+- **⚙️ Workday Prism Sync** – Automated Snowflake task and procedure-based sync with schema evolution handling  
+- **🧠 Salesforce Data Extractor** – Batch incremental pulls using simple-salesforce and AWS Glue  
+
+---
+
+## 📬 Let’s Connect
+
+💌 [samdvarghese@gmail.com](mailto:samdvarghese@gmail.com)  
+💼 [LinkedIn](https://www.linkedin.com/in/sam-daniel-varghese/)  
+
+---
+
+⭐ *Thanks for taking the time to check this out, Jay!*  
