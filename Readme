@@ -31,8 +31,69 @@ I’d be happy to chat or jump on a quick call if it helps to walk through how I
 
 ## 📄 Resume
 
-📎 [View Resume (PDF)](./Sam_Daniel-Resume.pdf)  
-*(or scroll down to see highlights below)*
+## 💼 **Professional Experience**
+
+### **Senior Data Engineer — BillGO Inc**  
+📅 *Dec 2022 – Present*  
+
+- Designed and built a **Python/Snowflake revenue model** to size TAM/SAM, forecast unit economics, and scenario-test pricing/volume.  
+- Quantified revenue potential for target accounts, integrating **Salesforce**, **firmographics**, and **pipeline data** into actionable forecasts.  
+- Created **AWS Glue/Snowpark** pipelines for onboarding new clients, establishing schemas, SCD tracking, and DQ checks.  
+- Engineered a **lead-scoring system** using engagement and fit factors; surfaced metrics inside Salesforce to drive prioritization.  
+- Integrated external systems (**Jira**, **Dayforce**, **public datasets**) and built **secure SFTP automations** for partner exchanges.  
+- Standardized **ETL conventions** and monitoring for repeatable, secure data movement across teams.
+
+---
+
+### **Business Intelligence Engineer — Amazon Inc, Sunnyvale**  
+📅 *Jan 2022 – Dec 2022*  
+
+- Led migration from **QuickSight** to an **in-house reporting platform**, defining data models, semantic layer, and RBAC.  
+- Established AWS infrastructure — IAM, policies, logging, monitoring — ensuring platform reliability and SLAs.  
+- Built a **Python ETL framework** for ingesting data from files, APIs, and databases with restartable runs and validations.  
+- Implemented **dataset anomaly detection** for schema drift, null spikes, and volume anomalies.  
+- Created a **weather-alerts data product** integrating NWA feeds and Google Address API for real-estate risk reporting.  
+- Migrated existing assets and Lambda automations to the new stack, defining access patterns for scale.
+
+---
+
+### **Lead ETL Developer — National Veterinary Associates, Los Angeles**  
+📅 *Oct 2018 – Jan 2022*  
+
+- Onboarded 1,500+ hospitals into the **Enterprise Data Warehouse (EDW)** with idempotent pipelines and DQ checks.  
+- Built automated **health-plan management workflows** to synchronize member and provider data.  
+- Wrote performant SQL and stored procedures for complex aggregations and refactored legacy jobs for reliability.  
+- Implemented scheduling, monitoring, and alerting systems to reduce manual interventions.  
+- Authored **data dictionaries** and **runbooks** for self-service analytics.
+
+---
+
+### **Senior Informatica Consultant — L.A. Care Health Plan, Los Angeles**  
+📅 *Sep 2017 – Sep 2018*  
+
+- Migrated legacy payer apps to **QNXT** by designing **Informatica PowerCenter** ETL workflows and reusable mappings.  
+- Built automated **premium payment (EDI 820)** pipelines with validation and reconciliation logic.  
+- Led a **PowerCenter modernization initiative**, introducing CI/CD, parameterization, and reusable components.
+
+---
+
+## 🎓 **Education**
+
+- **Master’s in Computer Engineering**  
+- **Bachelor of Engineering (Hons) in Electronics**
+
+---
+
+## ⚙️ **Tools & Technologies**
+
+**Cloud:** AWS (S3, Lambda, Glue, Athena, Step Functions, IAM, CloudWatch), Azure  
+**Data Warehousing:** Snowflake (Snowpark, Streams/Tasks), Redshift, PostgreSQL, SQL Server, Oracle  
+**ETL / Workflow:** Coalesce, AWS Glue, IICS, PowerCenter, SSIS, Airflow, Autosys  
+**Languages:** Python, PySpark, SQL, Bash  
+**Visualization:** MicroStrategy, QuickSight, SSRS  
+**Other:** Docker, GitHub Actions, dbt, Streamlit  
+
+---
 
 ---
 
